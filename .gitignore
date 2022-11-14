@@ -226,4 +226,4 @@ fabric.properties
 
 
 ## local files to ignore
-.ignore
+*.ignore
