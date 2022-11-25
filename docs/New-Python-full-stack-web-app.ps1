@@ -22,6 +22,16 @@ function Test-ValidProjectName ([string]$string) {
     if ([string]::IsNullOrWhiteSpace($string)) {
         throw [InvalidInput]::new('Empty names are not allowed. Please Input a valid folder Name.')
     }else {
+        # https://codeburst.io/creating-a-full-stack-web-application-with-python-npm-webpack-and-react-8925800503d9
+#     bool IsValidFilename(string testName)
+# {
+#     Regex containsABadCharacter = new Regex("[" + Regex.Escape(System.IO.Path.InvalidPathChars) + "]");
+#     if (containsABadCharacter.IsMatch(testName) { return false; };
+
+#     // other checks for UNC, drive-path format, etc
+
+#     return true;
+# }
         [string[]]$arr = $string.ToCharArray()
         [IO.Path]::InvalidPathChars | ForEach-Object {
             if($arr -contains "$_") {
