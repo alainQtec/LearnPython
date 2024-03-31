@@ -14,27 +14,27 @@
 #>
 class InvalidInput : System.SystemException {
     [string]$Message
-    InvalidInput() { $this.Message = "Invalid Input."}
-    InvalidInput([string]$msg) { $this.Message = $msg}
+    InvalidInput() { $this.Message = "Invalid Input." }
+    InvalidInput([string]$msg) { $this.Message = $msg }
 }
 
 function Test-ValidProjectName ([string]$string) {
     if ([string]::IsNullOrWhiteSpace($string)) {
         throw [InvalidInput]::new('Empty names are not allowed. Please Input a valid folder Name.')
-    }else {
+    } else {
         # https://codeburst.io/creating-a-full-stack-web-application-with-python-npm-webpack-and-react-8925800503d9
-#     bool IsValidFilename(string testName)
-# {
-#     Regex containsABadCharacter = new Regex("[" + Regex.Escape(System.IO.Path.InvalidPathChars) + "]");
-#     if (containsABadCharacter.IsMatch(testName) { return false; };
+        #     bool IsValidFilename(string testName)
+        # {
+        #     Regex containsABadCharacter = new Regex("[" + Regex.Escape(System.IO.Path.InvalidPathChars) + "]");
+        #     if (containsABadCharacter.IsMatch(testName) { return false; };
 
-#     // other checks for UNC, drive-path format, etc
+        #     // other checks for UNC, drive-path format, etc
 
-#     return true;
-# }
+        #     return true;
+        # }
         [string[]]$arr = $string.ToCharArray()
         [IO.Path]::InvalidPathChars | ForEach-Object {
-            if($arr -contains "$_") {
+            if ($arr -contains "$_") {
                 throw [InvalidInput]::new("Folder name containing $_ is not valid.")
             }
         }
@@ -44,7 +44,7 @@ function Initialize-Project {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $false, ValueFromPipeline)]
-        [ValidateScript({Test-ValidProjectName $_}, ErrorMessage = "Invalid Name.")]
+        [ValidateScript({ Test-ValidProjectName $_ }, ErrorMessage = "Invalid Name.")]
         [Alias('ProjectName', 'n')]
         [string]$Name
     )
