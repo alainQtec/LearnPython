@@ -17,4 +17,3 @@ https://www.kdnuggets.com/2022/10/beginner-guide-web-scraping-python.html
 https://www.kdnuggets.com/2022/08/free-python-project-coding-course.html
 https://www.kdnuggets.com/2022/10/3-ways-process-csv-files-python.html
 ```
- 
